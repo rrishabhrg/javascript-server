@@ -15,11 +15,18 @@
 ## Useful plugins of VS-CODE :
 ---
 
-* Path intellisense
-* Snippets and code style
-* Git lens
-* Guides
-* Debugger for chrome
-* Instant markdown
-* Open in browser
-* HTML snippets
+* __Settings Sync__ : Previously it is known as Visual Studio Code Settings Sync. It synchronizes settings, snippets, themes, keybindings, workspaces, extensions, and more across multiple machines.
+
+* __Stylelint__ : Stylelint is an extension that lints CSS, SCSS, and Less.
+
+* __Git lens__ : It enables you to visualize code authorship within VS Code.
+
+* __Guides__ : The Guides extension adds additional indentation guides to your editor.
+
+* __Debugger for chrome__ : This extension enables the Google Chrome browser debugger into your editor.
+
+* __Instant markdown__ : This extension lets you edit Markdown documents in VS-Code and instantly previews them in browser.
+
+* __Open in browser__ : As its name suggests, it enables you to view an HTML file in a  browser.
+
+* __HTML snippets__ : HTML Snippets adds in rich language support for HTML markup, including snippets, quick info, and descriptions that include whether a tag is deprecated.
