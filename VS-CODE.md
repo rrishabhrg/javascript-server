@@ -6,9 +6,9 @@
 * __Git Integration__ : Sometimes using Git can be fun or hard, but Visual Studio Code comes with integrated Git that allows for Adding, Committing, Pulling and Pushing Changes to a remote Git repository using a simple GUI.
 
 
-* __Debugging__ : Visual Studio Code has a rich API for enabling debugging tools, Here are some articles here in scotch referencing them.
+* __Debugging__ : <p>Visual Studio Code has a rich API for enabling debugging tools, Here are some articles here in scotch referencing them.</p>
 
-Debugging is a large topic, and is usually language/stack specific. Depending on the language you are using, there are available plugins that enable support for debugging, and you'll be able to use breakpoints to debug your code when developing.
+<pre><code>Debugging is a large topic, and is usually language/stack specific. Depending on the language you are using, there are available plugins that enable support for debugging, and you'll be able to use breakpoints to debug your code when developing.</code></pre>
 
 * __Integrated Terminal__ : Most of the time when running code, there's usually a terminal open either to the side, or somewhere in your machine.
 
