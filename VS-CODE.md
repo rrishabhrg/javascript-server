@@ -1,5 +1,6 @@
 # Features of VS-CODE : 
-==
+  ---
+  ---
 
 * __Visual Studio Code CLI__ : Visual Studio Code comes with an inbuilt Command Line Interface. Once you've installed Visual Studio Code, and have it open, press ⇧⌘P to open the command palette for Mac, or just ⌘P and the press > button.
 
