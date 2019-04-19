@@ -2,7 +2,7 @@
 
 The Twelve-Factor App Methodology is suggested by developers for smoothly working and delivering Software as a Service (SaaS) Applications or Web Apps with a focus on Microservices.
 
-    As the introduction states, this methodology is for creating apps that:
+As the introduction states, this methodology is for creating apps that:
 
 * Use ___declarative___ formats for setup automation, to minimize time and cost for new developers joining the project;
 
