@@ -1,0 +1,3 @@
+# What is MERN stack ?
+---
+MERN stack is the name given to a set of JavaScript based technologies used in developing web applications. MERN is the acronym name given to the set of technologies including Mongo DB, Express JS, React JS/ Redux and Node JS. Among these technologies Mongo DB is a database system, Node JS is a back-end runtime environment, Express JS is a back-end web framework and React is a front-end framework.
