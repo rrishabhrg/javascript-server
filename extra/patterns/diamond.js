@@ -1,6 +1,4 @@
-const args=process.argv.slice(2);
-
-let displayPyramid = (args) => {
+export default function displayPyramid (args){
     let rows=Number.parseInt(args);
     for (let i = 0; i < rows; i++) {
       let str = '';
@@ -23,4 +21,3 @@ let displayPyramid = (args) => {
         console.log(str);
     }
 }
-displayPyramid(args);
