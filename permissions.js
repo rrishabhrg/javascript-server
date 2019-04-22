@@ -14,10 +14,13 @@ let permission = {
   
   }
       
-  
-  console.log(hasPermission("getUsers","trainer","write"));           //True
-  console.log(hasPermission( "getUsers","trainer","write"));          //True
-  console.log(hasPermission( "getUsers","trainer","read"));           //True
-  console.log(hasPermission( "getUsers","trainee","write"));          //False
-  console.log(hasPermission( "getUsers","head-trainer","write"));     //True
-  
+  console.log('.........................................');
+  console.log(hasPermission("getUsers","trainer","write"));           //true
+  console.log(hasPermission("getUsers","trainer","read"));           //true
+  console.log(hasPermission("getUsers","trainer","delete"));          //false
+  console.log(hasPermission("getUsers","trainee","write"));          //false
+  console.log(hasPermission("getUsers","trainee","read"));           //true
+  console.log(hasPermission("getUsers","trainee","delete"));          //false
+  console.log(hasPermission("getUsers","head-trainer","write"));     //true
+  console.log(hasPermission("getUsers","head-trainer","read"));      //true
+  console.log(hasPermission("getUsers","head-trainer","delete"));     //true
