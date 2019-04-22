@@ -4,9 +4,9 @@
   "description": "Backend Training",
   "main": "index.js",
   "scripts": {
-    "pattern" : "npx babel-node extra",
+    "pattern": "npx babel-node extra",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx babel-node extra"
+    "start": "npx babel-node extra/utils"
   },
   "repository": {
     "type": "git",
