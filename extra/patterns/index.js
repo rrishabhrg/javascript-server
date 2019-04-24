@@ -1,9 +1,5 @@
-// import {displayPyramid} from './diamond';
-// import {displayEquiTriangle} from './equilateral';
+import {default as displayPyramid} from './diamond'
+import {default as displayEquiTriangle} from './equilateral'
 
-// export {displayPyramid};
-// export {displayEquiTriangle};
-
-
-export {default as abc} from './diamond'
-export {default as def} from './equilateral'
+export {displayPyramid};
+export {displayEquiTriangle};

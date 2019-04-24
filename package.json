@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "pattern": "npx babel-node extra",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx babel-node extra/utils"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

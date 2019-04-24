@@ -11,5 +11,3 @@ export default function displayEquiTriangle (args) {
       console.log(str);
     }
 }
-
-// export {displayEquiTriangle};
