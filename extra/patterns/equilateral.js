@@ -1,6 +1,4 @@
-const args=process.argv.slice(2);
-
-let displayEquiTriangle = (args) => {
+export default function displayEquiTriangle (args) {
     let rows=Number.parseInt(args);
     for (let i = 0; i <= rows; i++) {
       var str = '';
@@ -13,4 +11,3 @@ let displayEquiTriangle = (args) => {
       console.log(str);
     }
 }
-displayEquiTriangle(args);
