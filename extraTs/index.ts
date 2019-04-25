@@ -1,4 +1,5 @@
-import {displayPyramid, displayEquiTriangle} from './patterns/index';
+import {displayPyramid} from './patterns/./diamond';
+import {displayEquiTriangle} from './patterns/./equilateral';
 import {hasPermission} from './utils/permissions/permissions';
 import {validateUsers} from './utils/validation/validation';
 

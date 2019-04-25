@@ -1,4 +1,7 @@
-export default function displayPyramid (args){
+import { functionPyramid } from './../interfaces';
+
+  let displayPyramid: functionPyramid;
+  displayPyramid = function (args: string) {
   let rows=Number.parseInt(args);
   for (let i = 0; i < rows; i++) {
     let str = '';
@@ -21,3 +24,5 @@ export default function displayPyramid (args){
       console.log(str);
   }
 }
+
+export {displayPyramid};

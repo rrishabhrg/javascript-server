@@ -1,4 +1,7 @@
-export default function displayEquiTriangle (args) {
+import {functionEquiTriangle} from './../interfaces';
+
+let displayEquiTriangle: functionEquiTriangle;
+displayEquiTriangle = function (args: string) {
   let rows=Number.parseInt(args);
   for (let i = 0; i <= rows; i++) {
     var str = '';
@@ -11,3 +14,5 @@ export default function displayEquiTriangle (args) {
     console.log(str);
   }
 }
+
+export {displayEquiTriangle};
