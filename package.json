@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/rrishabhrg/javascript-server#readme",
   "devDependencies": {
+    "tsc-watch": "^2.1.2",
     "typescript": "^3.4.5"
   }
 }
