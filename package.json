@@ -4,6 +4,10 @@
   "description": "BACKEND TRAINING",
   "main": "index.js",
   "scripts": {
+  "description": "Backend Training",
+  "main": "index.js",
+  "scripts": {
+    "pattern": "npx babel-node extra",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +25,7 @@
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.4.3",
     "tsc-watch": "^2.1.2",
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "@babel/preset-env": "^7.4.3"
   }
 }
