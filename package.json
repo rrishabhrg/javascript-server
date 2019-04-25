@@ -1,0 +1,22 @@
+{
+  "name": "javascript-server",
+  "version": "1.0.0",
+  "description": "BACKEND TRAINING",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rrishabhrg/javascript-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rrishabhrg/javascript-server/issues"
+  },
+  "homepage": "https://github.com/rrishabhrg/javascript-server#readme",
+  "devDependencies": {
+    "typescript": "^3.4.5"
+  }
+}
