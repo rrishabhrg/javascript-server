@@ -1,4 +1,5 @@
 import {HEAD_TRAINER,TRAINEE,TRAINER} from '../../constants';
+import {function_hasPermission} from '../../interfaces'
 
 let permission = {
     'getUsers': {
@@ -9,18 +10,10 @@ let permission = {
     }
   }
   
-export default function hasPermission ( moduleName, role, permissionType) {
+let hasPermission: function_hasPermission;
+hasPermission = function (moduleName: string, role: string, permissionType: string) {
     return(permission[moduleName]['all'].indexOf(role)!==-1 || 
             permission[moduleName][permissionType].indexOf(role)!==-1);
 }
-      
-  // console.log('.........................................');
-  // console.log(hasPermission("getUsers","trainer","write"));          //true
-  // console.log(hasPermission("getUsers","trainer","read"));           //true
-  // console.log(hasPermission("getUsers","trainer","delete"));         //false
-  // console.log(hasPermission("getUsers","trainee","write"));          //false
-  // console.log(hasPermission("getUsers","trainee","read"));           //true
-  // console.log(hasPermission("getUsers","trainee","delete"));         //false
-  // console.log(hasPermission("getUsers","head-trainer","write"));     //true
-  // console.log(hasPermission("getUsers","head-trainer","read"));      //true
-  // console.log(hasPermission("getUsers","head-trainer","delete"));    //true
+
+export {hasPermission};

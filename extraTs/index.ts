@@ -1,10 +1,10 @@
-import {displayPyramid} from './patterns';
-import {displayEquiTriangle} from './patterns';
-import {hasPermission} from './utils';
-import {validateUsers} from './utils/validation/validation'
+import {displayPyramid} from './patterns/diamond';
+import {displayEquiTriangle} from './patterns/equilateral';
+import {hasPermission} from './utils/permissions/permissions';
+import {validateUsers} from './utils/validation/validation';
 
-displayPyramid(5);
-displayEquiTriangle(5);
+displayPyramid('5');
+displayEquiTriangle('6');
 
 console.log('.............................................................................');
 console.log(hasPermission("getUsers","trainer","write"));          //true
