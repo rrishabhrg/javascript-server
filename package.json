@@ -7,7 +7,8 @@
     "description": "Backend Training",
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc-watch --project . --onSuccess \"npm run nodemon\"",
-    "nodemon": "nodemon ./dist/index.js"
+    "nodemon": "nodemon ./dist/index.js",
+    "commit":"npx git-cz"
   },
   "repository": {
     "type": "git",
