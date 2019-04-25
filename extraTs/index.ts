@@ -1,5 +1,4 @@
-import {displayPyramid} from './patterns/diamond';
-import {displayEquiTriangle} from './patterns/equilateral';
+import {displayPyramid, displayEquiTriangle} from './patterns/index';
 import {hasPermission} from './utils/permissions/permissions';
 import {validateUsers} from './utils/validation/validation';
 
@@ -17,22 +16,22 @@ console.log(hasPermission("getUsers","head-trainer","write"));     //true
 console.log(hasPermission("getUsers","head-trainer","read"));      //true
 console.log(hasPermission("getUsers","head-trainer","delete"));    //true
 
-const users = [     
+const users = [
     {
       traineeEmail: 'trainee2@successive.tech@.tech', //FALSE
-      reviewerEmail: 'reviewer2@successive.tech',       
+      reviewerEmail: 'reviewer2@successive.tech',
     },
-  
+
     {
       traineeEmail: 'trainee3@successsive.tech@.tech', //FALSE
       reviewerEmail: 'reviewer3@successive.tech',
     },
-  
+
     {
       traineeEmail: 'trainee4@successive.tech',
       reviewerEmail: 'reviewer4@successive.tech',
     },
-  
+
     {
       traineeEmail: 'trainee5@successive.tech',
       reviewerEmail: 'reviewer5@successive@successive.tech', //FALSE

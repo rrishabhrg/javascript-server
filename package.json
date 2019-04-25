@@ -6,7 +6,7 @@
   "scripts": {
     "description": "Backend Training",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "extraTs:ts": "tsc-watch --project . --onSuccess \"npm run nodemon\"",
+    "compile": "tsc-watch --project . --onSuccess \"npm run nodemon\"",
     "nodemon": "nodemon ./dist/index.js"
   },
   "repository": {
@@ -29,9 +29,9 @@
   },
   "husky": {
     "hooks": {
-      "lint": "npm run lint",
-      "pre-commit": "npm run lint",
-      "pre-push": "npm run lint"
+      "lint": "",
+      "pre-commit": "",
+      "pre-push": ""
     }
   },
   "dependencies": {
