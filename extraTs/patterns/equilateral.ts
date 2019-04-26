@@ -1,7 +1,12 @@
-import {functionEquiTriangle} from './../interfaces';
+import { IEquiTriangle } from './../interfaces';
 
-let displayEquiTriangle: functionEquiTriangle;
-displayEquiTriangle = function (args: string) {
+interface INumber {
+  parseInt: Function
+}
+declare var Number: INumber;
+
+let displayEquiTriangle: IEquiTriangle;
+displayEquiTriangle = function (args: number) {
   let rows=Number.parseInt(args);
   for (let i = 0; i <= rows; i++) {
     var str = '';
@@ -15,4 +20,4 @@ displayEquiTriangle = function (args: string) {
   }
 }
 
-export {displayEquiTriangle};
+export { displayEquiTriangle };
