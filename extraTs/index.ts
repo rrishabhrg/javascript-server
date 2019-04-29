@@ -13,8 +13,8 @@ console.log(hasPermission("getUsers","trainer","delete"));         //false
 console.log(hasPermission("getUsers","trainee","write"));          //false
 console.log(hasPermission("getUsers","trainee","read"));           //true
 console.log(hasPermission("getUsers","trainee","delete"));         //false
-console.log(hasPermission("getUsers","head-trainer","write"));     //true
-console.log(hasPermission("getUsers","head-trainer","read"));      //true
+console.log(hasPermission("getUsers","head-tainer","write"));     //true
+console.log(hasPermission("getUsers","head-trainerr","read"));      //true
 console.log(hasPermission("getUsers","head-trainer","delete"));    //true
 
 const users = [
