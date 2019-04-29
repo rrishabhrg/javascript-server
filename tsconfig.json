@@ -13,6 +13,8 @@
         "outDir": "./dist",
         "baseUrl": ".",
         "paths": {
+          "*": ["types/*"],
+          "*": ["types/*"],
             "": [
                 "node_modules/",
                 "src/types/"
@@ -21,7 +23,7 @@
     },
     "exclude": ["dist"],
     "include": [
-        "extraTs", "extra/constants.ts", "src"
+        "src"
     ],
     "types": ["src/types"],
 }
