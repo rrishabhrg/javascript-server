@@ -1,8 +1,8 @@
-import {validateEmail} from '../helper';
-import {function_validateUsers} from '../../interfaces'
+import { validateEmail } from '../helper';
+import { IvalidateUsers } from '../../interfaces'
 
 //Validating users
-let validateUsers: function_validateUsers;
+let validateUsers: IvalidateUsers;
 validateUsers = function (users: { traineeEmail: string; reviewerEmail: string; }[]) {
   console.log(users);
   users.forEach((key: { traineeEmail: any; reviewerEmail: any; }) => {
@@ -11,4 +11,4 @@ validateUsers = function (users: { traineeEmail: string; reviewerEmail: string; 
   })
 }
 
-export {validateUsers};
+export { validateUsers };

@@ -1,19 +1,21 @@
-export interface functionPyramid {
-    (args: string): void;
+interface IPyramid {
+  (args: number): void;
 }
 
-export interface functionEquiTriangle {
-    (args: string): void;
+interface IEquiTriangle {
+  (args: number): void;
 }
 
-export interface function_hasPermission {
-    (moduleName: string, role: string, permissionType: string): boolean;
+interface IhasPermission {
+  (moduleName: string, role: string, permissionType: string): boolean;
 }
 
-export interface function_validateUsers {
-    (users: { traineeEmail: string; reviewerEmail: string; }[]): void;
+interface IvalidateUsers {
+  (users: { traineeEmail: string; reviewerEmail: string; }[]): void;
 }
 
-export interface function_validateEmail{
-    (trainee: string , reviewer: string): void;
+interface IvalidateEmail{
+  (trainee: string , reviewer: string): void;
 }
+
+export { IPyramid, IEquiTriangle, IhasPermission, IvalidateUsers, IvalidateEmail }

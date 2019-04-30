@@ -1,5 +1,4 @@
-import {default as displayPyramid} from './diamond'
-import {default as displayEquiTriangle} from './equilateral'
+import { displayPyramid } from './diamond'
+import { displayEquiTriangle } from './equilateral'
 
-export {displayPyramid};
-export {displayEquiTriangle};
+export { displayPyramid, displayEquiTriangle };
