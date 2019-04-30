@@ -1,9 +1,8 @@
-//import { function_validateUsers } from './../extraTs/interfaces';
 import { IConfig } from './config/IConfig';
 import * as express from 'express';
 import bodyParser = require('body-parser');
-import { displayErrors } from '../libs/routes/notFoundRoute';
-import { errorHandler } from '../libs/routes/errorHandler';
+import { notFound } from './libs/routes/notFoundRoute';
+import { errorHandler } from './libs/routes/errorHandler';
 
 class Server{
   app = express();
@@ -14,8 +13,8 @@ class Server{
   }
 
   public bootstrap: any = () => {
-    this.setupRoutes();
     this.initBodyParser();
+    this.setupRoutes();
     return this;
   }
 
@@ -26,16 +25,21 @@ class Server{
   }
 
   public setupRoutes: any = () => {
-    // this.app.get('/health-check', ( req: any,res: any ) => {
-    //   res.send('I Am OK');
-    // });
+    this.app.get('/health-check', ( req: any,res: any ) => {
+      res.send('I Am OK');
+    });
 
-    // this.app.get('/', ( req: any,res: any ) => {
-    //   res.send('I Am Fine');
-    // });
+    this.app.get('/', ( req: any,res: any ) => {
+      res.send('I Am Fine');
+    });
 
-    this.app.use(displayErrors());
-    this.app.use(errorHandler());
+    this.app.get('/errorTest', ( req: any,res: any ) => {
+      throw new Error("My custom error");
+    });
+
+    this.app.use(notFound);
+    this.app.use(errorHandler);
+
   }
 
   public initBodyParser: any = () => {
