@@ -1,4 +1,4 @@
-import { notFoundRoute, errorHandler } from './libs';
+import { notFoundRoute, errorHandler } from '../src';
 import { IConfig } from './config'
 import * as express from 'express';
 import bodyParser = require ('body-parser');
