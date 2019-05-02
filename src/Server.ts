@@ -1,8 +1,6 @@
-import { IConfig } from './config/IConfig';
+import { IConfig, notFound, errorHandler } from './index';
 import * as express from 'express';
-import bodyParser = require('body-parser');
-import { notFound } from './libs/routes/notFoundRoute';
-import { errorHandler } from './libs/routes/errorHandler';
+import bodyParser = require ('body-parser');
 
 class Server{
   app = express();
@@ -34,7 +32,12 @@ class Server{
     });
 
     this.app.get('/errorTest', ( req: any,res: any ) => {
-      throw new Error("My custom error");
+      try {
+        throw new Error("My custom error");
+      }
+      catch (err) {
+
+      }
     });
 
     this.app.use(notFound);
@@ -47,7 +50,6 @@ class Server{
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
   }
-
 }
 
 export { Server };

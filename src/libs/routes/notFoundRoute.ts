@@ -1,7 +1,9 @@
-let notFound: any = (req: any, res: any, next: any) => {
-  const err = 'Not Found';
-  res.status(404).send(err);
-  next();
-}
+import { NextFunction, Request, Response } from 'express';
 
-export { notFound };
+export default function notFoundRoute( req: Request, res: Response, next: NextFunction) {
+  return next({
+    error: 'Forbidden',
+    message: 'Access is forbidden to the requested page.',
+    status: '403',
+  });
+}
