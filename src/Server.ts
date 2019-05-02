@@ -34,14 +34,13 @@ class Server{
       res.send('I Am Fine');
     });
 
-    this.app.get('/errorTest', ( req: any,res: any ) => {
-      throw new Error("My Custom Error !!!! ");
-    });
+    // this.app.get('/errorTest', ( req: any,res: any ) => {
+    //   throw new Error("My Custom Error !!!! ");
+    // });
 
     this.app.get('/api', ( req: any,res: any ) => {
-      res.send("Trainee or USer");
+      res.send("Trainee or User");
     });
-
 
     this.app.use('/api', router);
     this.app.use(notFound);
