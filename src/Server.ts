@@ -31,15 +31,6 @@ class Server{
       res.send('I Am Fine');
     });
 
-    this.app.get('/errorTest', ( req: any,res: any ) => {
-      try {
-        throw new Error("My custom error");
-      }
-      catch (err) {
-
-      }
-    });
-
     this.app.use(notFound);
     this.app.use(errorHandler);
 
