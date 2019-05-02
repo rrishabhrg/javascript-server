@@ -1,10 +1,8 @@
-import { Server } from "./Server";
-import { config } from "./config/configuration";
-import { IConfig } from '../src/config/IConfig'
-import { default as notFound } from './libs/routes/notFoundRoute';
-import { errorHandler } from './libs/routes/errorHandler';
+import { default as Server } from './Server';
+import { config,IConfig } from './config';
+import { errorHandler, notFoundRoute } from './libs';
 
 const serve = new Server(config);
 serve.bootstrap().run();
 
-export { IConfig, notFound, errorHandler };
+export { IConfig, notFoundRoute, errorHandler };

@@ -1,13 +1,14 @@
-import { IConfig, notFound, errorHandler } from './index';
+import { IConfig, notFoundRoute, errorHandler } from './index';
 import * as express from 'express';
 import bodyParser = require ('body-parser');
 
 class Server{
-  app = express();
+  public app: express.Express;
   private port: string;
 
-  constructor (config: IConfig) {
+  constructor (private config: IConfig) {
     this.port = process.env.PORT;
+    this.app = express();
   }
 
   public bootstrap: any = () => {
@@ -23,17 +24,16 @@ class Server{
   }
 
   public setupRoutes: any = () => {
-    this.app.get('/health-check', ( req: any,res: any ) => {
-      res.send('I Am OK');
-    });
-
     this.app.get('/', ( req: any,res: any ) => {
       res.send('I Am Fine');
     });
 
-    this.app.use(notFound);
-    this.app.use(errorHandler);
+    this.app.get('/health-check', ( req: any,res: any ) => {
+      res.send('I Am OK');
+    });
 
+    this.app.use(notFoundRoute);
+    this.app.use(errorHandler);
   }
 
   public initBodyParser: any = () => {
@@ -43,4 +43,4 @@ class Server{
   }
 }
 
-export { Server };
+export default Server;
