@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { default as Controls } from './Controller';
+import { Controls } from '../trainee';
 
 Object.freeze(Controls);  //{Freezing the object of Control class.}
 
