@@ -1,13 +1,13 @@
-import { IConfig, notFoundRoute, errorHandler } from './index';
+import { notFoundRoute, errorHandler } from './libs';
+import { IConfig } from './config'
 import * as express from 'express';
 import bodyParser = require ('body-parser');
 
 class Server{
-  public app: express.Express;
-  private port: string;
+  app = express();
 
   constructor (private config: IConfig) {
-    this.port = process.env.PORT;
+    this.config.port = process.env.PORT;
     this.app = express();
   }
 
@@ -18,8 +18,8 @@ class Server{
   }
 
   public run: any = () => {
-    this.app.listen(this.port, () => {
-      console.log(`App is running on the port ${this.port}!`);
+    this.app.listen(this.config.port, () => {
+      console.log(`App is running on the port ${this.config.port}!`);
     });
   }
 

@@ -1,8 +1,8 @@
 import { default as Server } from './Server';
-import { config,IConfig } from './config';
+import { config } from './config';
 import { errorHandler, notFoundRoute } from './libs';
 
-const serve = new Server(config);
-serve.bootstrap().run();
+const server = new Server(config);
+server.bootstrap().run();
 
-export { IConfig, notFoundRoute, errorHandler };
+export { notFoundRoute, errorHandler };

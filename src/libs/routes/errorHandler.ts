@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 let errorHandler: any = (err: any, req: Request, res: Response, next: NextFunction) => {
   let errorObj =  {
     error: err.error ? err.error : 'Not Found',
-    message: 'Page Not Found.',
+    message: err.message ? err.message : 'Not Found Route',
     status: err.status ? err.status : 404,
     timestamp: new Date()
   }
