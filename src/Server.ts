@@ -5,9 +5,10 @@ import bodyParser = require ('body-parser');
 
 class Server{
   app = express();
+  port: string;
 
   constructor (private config: IConfig) {
-    this.config.port = process.env.PORT;
+    this.port = process.env.PORT;
     this.app = express();
   }
 
@@ -18,8 +19,8 @@ class Server{
   }
 
   public run: any = () => {
-    this.app.listen(this.config.port, () => {
-      console.log(`App is running on the port ${this.config.port}!`);
+    this.app.listen(this.port, () => {
+      console.log(`App is running on the port ${this.port}!`);
     });
   }
 
