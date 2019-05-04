@@ -1,14 +1,17 @@
 import * as express from 'express';
-import { default as Controls } from './Controller';
+import Controls from './Controller';
+import validator from '../../valid';
+import schema from '../../mySchema';
 
-Object.freeze(Controls);  //{Freezing the object of Control class.}
+Object.freeze(Controls);  //{Freezing the object of Control class.}x
 
-const router = express.Router();
+const traineeRouter = express.Router();
 
-router.get('/get', Controls.get);
-router.post('/post', Controls.post);
-router.put('/put', Controls.put);
-router.delete('/delete', Controls.delete);
-//router.post('/post', cehck(email.isemail(0)), Controls.delete);
+traineeRouter.get('/get', Controls.get);
+traineeRouter.post('/post', Controls.post);
+traineeRouter.put('/update', Controls.put);
+traineeRouter.delete('/delete', Controls.delete);
 
-export { router };
+traineeRouter.post('/schema-test', validator(schema.post), Controls.schemaCheck);
+
+export { traineeRouter };

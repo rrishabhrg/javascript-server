@@ -1,7 +1,7 @@
-let notFound: any = (req: any, res: any, next: any) => {
-  const err = 'Not Found';
-  res.status(404).send(err);
-  next();
+export default function notFoundRoute( req, res, next) {
+  return next({
+    error: 'Forbidden',
+    message: 'Requested Page Forbidden.',
+    status: 403,
+  });
 }
-
-export { notFound };

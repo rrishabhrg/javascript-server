@@ -1,5 +1,9 @@
-import { Server } from "./Server";
-import { config } from "./config/configuration";
+import { default as Server } from './Server';
+import { default as validation } from '../extraTs/utils/validation/validation';
+import { config } from './config';
+import { errorHandler, notFoundRoute } from './libs';
 
-const serve = new Server(config);
-serve.bootstrap().run();
+const server = new Server(config);
+server.bootstrap().run();
+
+export { notFoundRoute, errorHandler, validation };

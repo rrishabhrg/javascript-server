@@ -1,19 +1,23 @@
-class Control{
-  public get(req: any, res: any){
+class Controller{
+  public get(req, res){
     res.send('Got a GET request.');
   }
 
-  public post(req: any, res: any){
-    res.send('Got a POST request.');
+  public post(req, res){
+    res.json(req.body);
   }
 
-  public put(req: any, res: any){
+  public put(req, res){
     res.send('Got a PUT request.');
   }
 
-  public delete(req: any, res: any){
+  public delete(req, res){
     res.send('Got a DELETE request.');
+  }
+
+  public schemaCheck(req, res){
+    res.json(req.body);
   }
 }
 
-export default new Control();  //{Creating and exporting object of class.}
+export default new Controller();  //{Creating and exporting object of class.}
