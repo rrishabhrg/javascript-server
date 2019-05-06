@@ -33,8 +33,8 @@ class Server{
   }
 
   public initBodyParser = () => {
-    this.app.use(this.bodyParser.json({ type: 'text/html' }));
-    this.app.use(this.bodyParser.urlencoded({ extended: false }))
+    this.app.use(bodyParser.json({ type: 'text/html' }));
+    this.app.use(bodyParser.urlencoded({ extended: false }))
     }
 }
 
