@@ -1,5 +1,8 @@
-import { Server } from "./Server";
-import { config } from "./config/configuration";
+import { default as Server } from './Server';
+import { config } from './config';
+import { router } from './router';
 
-const serve = new Server(config);
-serve.bootstrap().run();
+const server = new Server(config);
+server.bootstrap().run();
+
+export { router };

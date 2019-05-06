@@ -1,13 +1,13 @@
-const var_err =  {
-  error: 'Not Found',
-  message: 'error',
-  status: 500,
-  timestamp: "2019-01-08T17:38:21.929Z"
-}
+import { NextFunction, Request, Response } from 'express';
 
-let errorHandler: any = (err: any, req: any, res: any, next: any) => {
-  res.send(var_err).json(err.message);
-  next();
+let errorHandler: any = (err: any, req: Request, res: Response, next: NextFunction) => {
+  let errorObj =  {
+    error: err.error ? err.error : 'Not Found',
+    message: err.message ? err.message : 'Not Found Route',
+    status: err.status ? err.status : 404,
+    timestamp: new Date()
+  }
+  res.status(errorObj.status).json(errorObj);
 };
 
 export { errorHandler };

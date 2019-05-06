@@ -1,19 +1,19 @@
-import { IConfig } from './config/IConfig';
+import { notFoundRoute, errorHandler } from './libs';
+import { IConfig } from './config'
 import * as express from 'express';
-import bodyParser = require('body-parser');
-import { notFound } from './libs/routes/notFoundRoute';
-import { errorHandler } from './libs/routes/errorHandler';
-import { router } from './router';
+import { router } from 'src';
+import bodyParser = require ('body-parser');
 
 class Server{
   app = express();
-  private port: string;
+  port: string;
 
-  constructor (config: IConfig) {
+  constructor (private config: IConfig) {
     this.port = process.env.PORT;
+    this.app = express();
   }
 
-  public bootstrap: any = () => {
+  public bootstrap = (): Server => {
     this.initBodyParser();
     this.setupRoutes();
     return this;
@@ -26,24 +26,16 @@ class Server{
   }
 
   public setupRoutes: any = () => {
-    this.app.get('/health-check', ( req: any,res: any ) => {
-      res.send('I Am OK');
-    });
-
     this.app.get('/', ( req: any,res: any ) => {
       res.send('I Am Fine');
     });
-
-    // this.app.get('/errorTest', ( req: any,res: any ) => {
-    //   throw new Error("My Custom Error !!!! ");
-    // });
 
     this.app.get('/api', ( req: any,res: any ) => {
       res.send("Trainee or User");
     });
 
     this.app.use('/api', router);
-    this.app.use(notFound);
+    this.app.use(notFoundRoute);
     this.app.use(errorHandler);
   }
 
@@ -54,4 +46,4 @@ class Server{
   }
 }
 
-export { Server };
+export default Server;
