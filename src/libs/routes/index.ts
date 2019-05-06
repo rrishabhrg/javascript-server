@@ -1,4 +1,4 @@
-import { errorHandler } from './errorHandler'
-import { default as notFoundRoute } from './notFoundRoute'
+import { errorHandler } from './errorHandler';
+import { default as notFoundRoute } from './notFoundRoute';
 
 export { errorHandler, notFoundRoute };

@@ -1,18 +1,20 @@
+import { notFoundRoute, errorHandler } from './libs';
+import { IConfig } from './config'
 import * as express from 'express';
-import { notFoundRoute } from './libs/routes';
-import { errorHandler } from './libs/routes/errorHandler';
 import { traineeRouter } from './router';
+import bodyParser = require ('body-parser');
 
 class Server{
   app = express();
-  private port;
-  private bodyParser = require('body-parser')
+  port: string;
+  bodyParser: any;
 
-  constructor (config) {
+  constructor (private config: IConfig) {
     this.port = process.env.PORT;
+    this.app = express();
   }
 
-  public bootstrap: any = () => {
+  public bootstrap = (): Server => {
     this.initBodyParser();
     this.setupRoutes();
     return this;
@@ -36,4 +38,4 @@ class Server{
     }
 }
 
-export default Server ;
+export default Server;
