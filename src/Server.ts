@@ -1,6 +1,7 @@
-import { notFoundRoute, errorHandler } from '../src';
+import { notFoundRoute, errorHandler } from './libs';
 import { IConfig } from './config'
 import * as express from 'express';
+import { router } from './router';
 import bodyParser = require ('body-parser');
 
 class Server{
@@ -20,7 +21,7 @@ class Server{
 
   public run: any = () => {
     this.app.listen(this.port, () => {
-      console.log(`App is running on the port ${this.port}!`);
+      console.log(`This app is running on the port ${this.port}!`);
     });
   }
 
@@ -29,10 +30,11 @@ class Server{
       res.send('I Am Fine');
     });
 
-    this.app.get('/health-check', ( req: any,res: any ) => {
-      res.send('I Am OK');
+    this.app.get('/api', ( req: any,res: any ) => {
+      res.send("Trainee or User");
     });
 
+    this.app.use('/api', router);
     this.app.use(notFoundRoute);
     this.app.use(errorHandler);
   }

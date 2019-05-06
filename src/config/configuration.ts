@@ -1,4 +1,4 @@
-import { IConfig } from './IConfig';
+import { IConfig } from '../config';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
