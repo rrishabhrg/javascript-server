@@ -1,3 +1,3 @@
-import { errorHandler, notFoundRoute } from './routes';
+import { errorHandler, notFoundRoute, authMiddleWare } from './routes';
 
-export { errorHandler, notFoundRoute };
+export { errorHandler, notFoundRoute, authMiddleWare };

@@ -1,7 +1,7 @@
 export default {
   post: {
     id: {
-      isLength :{
+      isLength: {
         options: { min:2 , max: 5}
       },
       in: ['body'],

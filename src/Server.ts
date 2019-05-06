@@ -1,12 +1,11 @@
 import * as express from 'express';
-import { notFoundRoute } from './libs/routes';
-import { errorHandler } from './libs/routes/errorHandler';
+import { notFoundRoute, errorHandler } from './libs';
 import { traineeRouter } from './router';
 
 class Server{
   app = express();
   private port;
-  private bodyParser = require('body-parser')
+  private bodyParser = require('body-parser');
 
   constructor (config) {
     this.port = process.env.PORT;
@@ -32,8 +31,8 @@ class Server{
 
   public initBodyParser = () => {
     this.app.use(this.bodyParser.json({ type: 'text/html' }));
-    this.app.use(this.bodyParser.urlencoded({ extended: false }))
-    }
+    this.app.use(this.bodyParser.urlencoded({ extended: false }));
+  }
 }
 
 export default Server ;
