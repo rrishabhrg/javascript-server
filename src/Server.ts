@@ -1,7 +1,7 @@
 import { notFoundRoute, errorHandler } from './libs';
 import { IConfig } from './config'
 import * as express from 'express';
-import { router } from 'src';
+import { router } from './router';
 import bodyParser = require ('body-parser');
 
 class Server{

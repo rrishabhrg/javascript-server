@@ -1,4 +1,4 @@
-import { default as Controls } from './Controller';
-import { router } from 'src/controllers/trainee/routes';
+import Controls from './Controller';
+import { router } from './routes';
 
 export { Controls, router };

@@ -1,3 +1,3 @@
-import { Controls, router } from 'src/controllers/trainee/index';
+import { Controls, router } from './trainee';
 
 export { Controls, router };
