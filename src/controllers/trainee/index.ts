@@ -1,4 +1,4 @@
-import Controls from './Controller';
-import { router } from './routes';
+import { traineeRouter } from './routes';
+import Controller from './Controller';
 
-export { Controls, router };
+export { traineeRouter, Controller };

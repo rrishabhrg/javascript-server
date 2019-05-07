@@ -1,13 +1,19 @@
 import * as express from 'express';
-import { Controls } from '../trainee';
+import Controls from './Controller';
+import validator from '../../valid';
+import schema from '../../mySchema';
+import { authMiddleWare } from '../../libs/routes/authMiddleWare';
 
-Object.freeze(Controls);  //{Freezing the object of Control class.}
+Object.freeze(Controls);
+const traineeRouter = express.Router();
 
-const router = express.Router();
+traineeRouter.get('/get', Controls.get);
+traineeRouter.post('/post', Controls.post);
+traineeRouter.put('/update', Controls.put);
+traineeRouter.delete('/delete', Controls.delete);
 
-router.get('/get', Controls.get);
-router.post('/post', Controls.post);
-router.put('/put', Controls.put);
-router.delete('/delete', Controls.delete);
+traineeRouter.post('/schema-test', validator(schema.post), Controls.schemaCheck);
 
-export { router };
+traineeRouter.post('/token-test', authMiddleWare('getUsers', 'read'), Controls.post);
+
+export { traineeRouter };

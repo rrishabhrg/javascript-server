@@ -1,6 +1,6 @@
-interface IConfig {
-  PORT: number,
-  NODE_ENV: string
+export interface IConfig {
+  PORT,
+  NODE_ENV,
+  KEY,
+  MONGO_URL
 }
-
-export { IConfig };

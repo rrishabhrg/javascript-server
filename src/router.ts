@@ -1,3 +1,3 @@
-import { router } from './controllers';
+import { traineeRouter } from './controllers';
 
-export { router };
+export { traineeRouter };
