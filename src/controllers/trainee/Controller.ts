@@ -1,4 +1,4 @@
-class Controller{
+class Controller {
   public get(req, res){
     res.send('Got a GET request.');
   }

@@ -1,14 +1,17 @@
 import * as express from 'express';
 import { notFoundRoute, errorHandler } from './libs';
 import { traineeRouter } from './router';
+import Database from './libs/Database';
 
-class Server{
+class Server {
   app = express();
   private port;
+  private mongoUrl;
   private bodyParser = require('body-parser');
 
   constructor (config) {
     this.port = process.env.PORT;
+    this.mongoUrl = process.env.MONGO_URL;
   }
 
   public bootstrap: any = () => {
@@ -18,6 +21,7 @@ class Server{
   }
 
   public run: any = () => {
+    Database.open(this.mongoUrl);
     this.app.listen(this.port, () => {
       console.log(`This app is running on the port ${this.port}!`);
     });
