@@ -14,7 +14,7 @@ class Server {
     this.mongoUrl = process.env.MONGO_URL;
   }
 
-  public bootstrap: any = () => {
+  public bootstrap = (): Server => {
     this.initBodyParser();
     this.setupRoutes();
     return this;
@@ -28,6 +28,15 @@ class Server {
   }
 
   public setupRoutes: any = () => {
+    this.app.use('/api', traineeRouter);
+    this.app.get('/', ( req: any,res: any ) => {
+      res.send('I Am Fine');
+    });
+
+    this.app.get('/api', ( req: any,res: any ) => {
+      res.send("Trainee or User");
+    });
+
     this.app.use('/api', traineeRouter);
     this.app.use(notFoundRoute);
     this.app.use(errorHandler);
