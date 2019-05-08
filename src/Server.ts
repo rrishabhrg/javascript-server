@@ -28,7 +28,6 @@ class Server {
   }
 
   public setupRoutes: any = () => {
-    this.app.use('/api', traineeRouter);
     this.app.get('/', ( req: any,res: any ) => {
       res.send('I Am Fine');
     });
