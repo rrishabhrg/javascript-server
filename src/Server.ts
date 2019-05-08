@@ -1,12 +1,13 @@
 import { notFoundRoute, errorHandler } from './libs';
 import { IConfig } from './config'
 import * as express from 'express';
-import { router } from './router';
+import { traineeRouter } from './router';
 import bodyParser = require ('body-parser');
 
 class Server{
   app = express();
   port: string;
+  bodyParser: any;
 
   constructor (private config: IConfig) {
     this.port = process.env.PORT;
@@ -26,24 +27,15 @@ class Server{
   }
 
   public setupRoutes: any = () => {
-    this.app.get('/', ( req: any,res: any ) => {
-      res.send('I Am Fine');
-    });
-
-    this.app.get('/api', ( req: any,res: any ) => {
-      res.send("Trainee or User");
-    });
-
-    this.app.use('/api', router);
+    this.app.use('/api', traineeRouter);
     this.app.use(notFoundRoute);
     this.app.use(errorHandler);
   }
 
-  public initBodyParser: any = () => {
-    const { app } = this;
-    app.use(bodyParser.urlencoded({extended: true}));
-    app.use(bodyParser.json());
-  }
+  public initBodyParser = () => {
+    this.app.use(bodyParser.json({ type: 'text/html' }));
+    this.app.use(bodyParser.urlencoded({ extended: false }))
+    }
 }
 
 export default Server;

@@ -1,6 +1,4 @@
-interface IConfig {
-  PORT: number,
+export interface IConfig {
+  PORT: string,
   NODE_ENV: string
 }
-
-export { IConfig };
