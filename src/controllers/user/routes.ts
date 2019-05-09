@@ -1,14 +1,12 @@
-import Controls from './Controller';
 import * as express from 'express';
-import UserModel from '../../repositories/user/UserModel';
-import { Control } from '..';
+import UserController from './Controller';
 
-Object.freeze(Controls);
+Object.freeze(UserController);
 const userRouter = express.Router();
 
-userRouter.post('/create', Control.createUser);
-userRouter.get('/:id', Control.readUser);
-userRouter.put('/:id/update', Control.updateUser);
-userRouter.delete('/:id/delete', Control.deleteUser);
+userRouter.post('/create', UserController.post);
+userRouter.get('/:id', UserController.get);
+userRouter.put('/:id/update', UserController.put);
+userRouter.delete('/:id/delete', UserController.delete);
 
 export { userRouter };

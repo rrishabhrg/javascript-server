@@ -1,4 +1,4 @@
 import { userRouter } from './routes';
-import Control from './Controller';
+import UserController from './Controller';
 
-export { userRouter, Control };
+export { userRouter, UserController };

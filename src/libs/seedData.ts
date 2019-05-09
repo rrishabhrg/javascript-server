@@ -1,12 +1,39 @@
 import { userRepository } from '../repositories/user/UserRepository';
 
 const userRepoObj = new userRepository();
-export default () => {
-  userRepository.createUser({
-    name: 'Rishabh Gupta',
-    email: 'rrishabh@gmail.com'
-  })
+const seedData = () => {
+  userRepoObj.count().then((result) => {
+    if (result === 0) {
+      userRepoObj.createUser({
+        name: 'Rishabh Gupta',
+        email: 'rrishabh@gmail.com'
+      })
+    }
+  });
+  console.log('Data Seeded Successfully.');
 }
+
+export default seedData;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

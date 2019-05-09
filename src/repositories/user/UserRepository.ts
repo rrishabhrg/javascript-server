@@ -1,5 +1,4 @@
-import UserModel from "./UserModel";
-// import { Mongoose } from "mongoose";
+import UsersModel from "./UserModel";
 import * as mongoose from 'mongoose';
 
 class userRepository{
@@ -8,43 +7,37 @@ class userRepository{
     return mongoose.Types.ObjectId();
   }
 
-  public static count(query: any){
-    return UserModel.countDocuments(query);
+  public count(){
+    return UsersModel.countDocuments();
   }
 
-  // static createUser = function (req, res) {
-  public static createUser(req, res){
+  public createUser(data){
     const id = userRepository.generateObjectId();
-    const model = new UserModel({
-      name: req.body.name,
-      email: req.body.email
+    const model = new UsersModel({
+      _id: id,
+      ...data
     });
-    model.save(function (err){
-      if(err){
-        return (err);
-      }
-      res.send('New user created successfully.');
+    return model.save();
+  }
+
+  public readUser(id){
+    UsersModel.findById(id, function (err, userModel) {
+      if (err) return (err);
+      return (UsersModel);
     })
   }
 
-  static readUser = function (req, res) {
-    UserModel.findById(req.params.id, function (err, userModel) {
+  public updateUser(id){
+    UsersModel.findByIdAndUpdate(id, function (err) {
       if (err) return (err);
-      res.send(UserModel);
+      // return('User details updated successfully.');
     })
   }
 
-  static updateUser = function (req, res) {
-    UserModel.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, userModel) {
+  public deleteUser(id){
+    UsersModel.findByIdAndRemove(id, function (err) {
       if (err) return (err);
-      res.send('User details updated successfully.');
-    })
-  }
-
-  static deleteUser = function (req, res) {
-    UserModel.findByIdAndRemove(req.params.id, function (err) {
-      if (err) return (err);
-      res.send('Record deleted successfully.');
+      // return('Record deleted successfully.');
     })
   }
 }

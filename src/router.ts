@@ -5,6 +5,6 @@ const trainee_routes = express.Router();
 trainee_routes.use('trainee', traineeRouter);
 
 const user_routes = express.Router();
-user_routes.use('trainee', userRouter);
+user_routes.use('user', userRouter);
 
 export { traineeRouter, userRouter };

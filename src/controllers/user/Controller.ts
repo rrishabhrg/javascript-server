@@ -1,26 +1,30 @@
-import { userRepository } from '../user/../../repositories/user/UserRepository';
-import { RequestHandler } from 'express';
+import { userRepository } from '../../repositories/user/UserRepository';
 
-class Control {
-  [x: string]: RequestHandler;
+class UserController {
+  userRepoObj = new userRepository();
 
-  // const userRepositoryObj = new userRepository();
-  public post(req, res){
-    userRepository.createUser(req,res);
+  public post = (req: any, res: any) => {
+    const { email, name }  = req.body;
+    this.userRepoObj.createUser({ email, name });
+    res.send('New user created successfully.');
   }
 
   public get(req, res){
-    userRepository.readUser(req,res);
+    const { id } = req.params.id;
+    this.userRepoObj.readUser({ id });
   }
 
   public put(req, res){
-    userRepository.updateUser(req,res);
+    const { id } = req.params.id;
+    this.userRepoObj.updateUser({ id });
+    return('User details updated successfully.');
   }
 
   public delete(req, res){
-    userRepository.deleteUser(req,res);
+    const { id } = req.params.id;
+    this.userRepoObj.deleteUser({ id });
+    return('Record deleted successfully.');
   }
-
 }
 
-export default new Control();  //{Creating and exporting object of class.}
+export default new UserController();  //{Creating and exporting object of class.}
