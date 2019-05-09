@@ -9,7 +9,7 @@
     "precompile": "rm -rf ./dist",
     "compile": "tsc --project .",
     "execute": "tsc-watch --project . --onSuccess \"npm run nodemon\"",
-    "nodemon": "nodemon ./dist/index.js",
+    "nodemon": "nodemon ./dist/",
     "commit": "npx git-cz"
   },
   "repository": {
