@@ -7,7 +7,6 @@ import { traineeRouter } from './router';
 class Server{
   app = express();
   port: string;
-  // bodyParser: any;
 
   constructor (private config: IConfig) {
     this.port = process.env.PORT;
