@@ -1,4 +1,4 @@
-class Controller {
+class TraineeController {
   public get(req, res){
     res.send('Got a GET request.');
   }
@@ -20,4 +20,4 @@ class Controller {
   }
 }
 
-export default new Controller();  //{Creating and exporting object of class.}
+export default new TraineeController();  //{Creating and exporting object of class.}

@@ -1,6 +1,6 @@
 import * as express from 'express';
 import { notFoundRoute, errorHandler } from './libs';
-import { traineeRouter } from './router';
+import { router } from './router';
 import Database from './libs/Database';
 
 class Server {
@@ -28,15 +28,8 @@ class Server {
   }
 
   public setupRoutes: any = () => {
-    this.app.get('/', ( req: any,res: any ) => {
-      res.send('I Am Fine');
-    });
 
-    this.app.get('/api', ( req: any,res: any ) => {
-      res.send("Trainee or User");
-    });
-
-    this.app.use('/api', traineeRouter);
+    this.app.use('/api', router);   //Router
     this.app.use(notFoundRoute);
     this.app.use(errorHandler);
   }

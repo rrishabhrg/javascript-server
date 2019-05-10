@@ -1,4 +1,5 @@
 export interface IConfig {
+  // KEY: any;
   PORT,
   NODE_ENV,
   KEY,

@@ -1,8 +1,7 @@
-import UsersModel from "./UserModel";
+import UsersModel from './UserModel';
 import * as mongoose from 'mongoose';
 
 class userRepository{
-
   public static generateObjectId(){
     return mongoose.Types.ObjectId();
   }
@@ -11,34 +10,30 @@ class userRepository{
     return UsersModel.countDocuments();
   }
 
-  public createUser(data){
+  public createUser(data){                               //CREATE
     const id = userRepository.generateObjectId();
     const model = new UsersModel({
       _id: id,
       ...data
     });
-    return model.save();
+    model.save().then(data => {
+      return data;
+    })
+    .catch(error =>{
+      return error.message || "Some error occurred while creating the record."
+    });
   }
 
-  public readUser(id){
-    UsersModel.findById(id, function (err, userModel) {
-      if (err) return (err);
-      return (UsersModel);
-    })
+  public getUserById(id: any){                          //READ
+    return UsersModel.findById(id);
   }
 
-  public updateUser(id){
-    UsersModel.findByIdAndUpdate(id, function (err) {
-      if (err) return (err);
-      // return('User details updated successfully.');
-    })
+  public updateUserById(id: any){             //UPDATE
+    return UsersModel.findByIdAndUpdate();
   }
 
-  public deleteUser(id){
-    UsersModel.findByIdAndRemove(id, function (err) {
-      if (err) return (err);
-      // return('Record deleted successfully.');
-    })
+  public deleteUserById(id: any){                    //DELETE
+    return UsersModel.findByIdAndRemove(id);
   }
 }
 
