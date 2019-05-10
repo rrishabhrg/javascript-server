@@ -1,3 +1,4 @@
+import { bodyParser } from 'body-parser';
 import { notFoundRoute, errorHandler } from './libs';
 import { IConfig } from './config'
 import * as express from 'express';
@@ -6,7 +7,7 @@ import { traineeRouter } from './router';
 class Server{
   app = express();
   port: string;
-  bodyParser: any;
+  // bodyParser: any;
 
   constructor (private config: IConfig) {
     this.port = process.env.PORT;
@@ -32,8 +33,8 @@ class Server{
   }
 
   public initBodyParser = () => {
-    this.app.use(this.bodyParser.json({ type: 'text/html' }));
-    this.app.use(this.bodyParser.urlencoded({ extended: false }));
+    this.app.use(bodyParser.json({ type: 'text/html' }));
+    this.app.use(bodyParser.urlencoded({ extended: false }));
   }
 }
 
