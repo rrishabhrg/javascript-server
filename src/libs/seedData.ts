@@ -1,10 +1,9 @@
-import { userRepository } from '../repositories/user/UserRepository';
+import UserRepository from '../repositories/user/UserRepository';
 
-const userRepoObj = new userRepository();
 const seedData = () => {
-  userRepoObj.count().then((result) => {
+  UserRepository.count().then((result) => {
     if (result === 0) {
-      userRepoObj.createUser({
+      UserRepository.createUser({
         name: 'Rishabh Gupta',
         email: 'rrishabh@gmail.com',
         password: '1234567',

@@ -2,12 +2,13 @@ import * as express from 'express';
 import { notFoundRoute, errorHandler } from './libs';
 import { router } from './router';
 import Database from './libs/Database';
+import bodyParser from 'body-parser';
 
 class Server {
   app = express();
   private port;
   private mongoUrl;
-  private bodyParser = require('body-parser');
+  // private bodyParser = require('body-parser');
 
   constructor (config) {
     this.port = process.env.PORT;
@@ -35,8 +36,8 @@ class Server {
   }
 
   public initBodyParser = () => {
-    this.app.use(this.bodyParser.json({ type: 'text/html' }));
-    this.app.use(this.bodyParser.urlencoded({ extended: false }));
+    this.app.use(bodyParser.json({ type: 'text/html' }));
+    this.app.use(bodyParser.urlencoded({ extended: false }));
   }
 }
 

@@ -1,9 +1,14 @@
 import UsersModel from './UserModel';
 import * as mongoose from 'mongoose';
 
-class userRepository{
+class userRepository {
+
   public static generateObjectId(){
     return mongoose.Types.ObjectId();
+  }
+
+  public async signIn(query){
+    return await UsersModel.find(query, { password: 0});
   }
 
   public count(){
@@ -37,4 +42,4 @@ class userRepository{
   }
 }
 
-export { userRepository };
+export default new userRepository();
