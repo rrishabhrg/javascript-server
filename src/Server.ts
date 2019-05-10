@@ -1,7 +1,7 @@
-import { bodyParser } from 'body-parser';
+import * as express from 'express';
+import bodyParser from 'body-parser';
 import { notFoundRoute, errorHandler } from './libs';
 import { IConfig } from './config'
-import * as express from 'express';
 import { traineeRouter } from './router';
 
 class Server{
