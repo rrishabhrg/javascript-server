@@ -2,7 +2,7 @@ import * as express from 'express';
 import Controls from './Controller';
 import validator from '../../valid';
 import schema from '../../mySchema';
-import { authMiddleWare } from '../../libs/routes/authMiddleWare';
+import { authMiddleWare } from '../../libs/routes/';
 
 Object.freeze(Controls);
 const traineeRouter = express.Router();

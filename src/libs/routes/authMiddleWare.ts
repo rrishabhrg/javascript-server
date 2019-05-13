@@ -1,5 +1,5 @@
-import { hasPermission } from '../routes/../../../extraTs/patterns/../utils/permissions/permissions';
-import { config } from '../routes/../../config';
+import { hasPermission } from '../../../extraTs/utils/permissions/permissions';
+import { config } from '../../config';
 import * as jwt from 'jsonwebtoken';
 
 export const authMiddleWare = (moduleName, permissionType) => (req, res, next) => {
