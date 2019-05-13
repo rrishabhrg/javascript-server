@@ -1,7 +1,8 @@
 import UserRepository from '../repositories/user/UserRepository';
 
 const seedData = () => {
-  UserRepository.count().then((result) => {
+  const result = UserRepository.count()
+  .then((result) => {
     if (result === 0) {
       UserRepository.createUser({
         name: 'Rishabh Gupta',

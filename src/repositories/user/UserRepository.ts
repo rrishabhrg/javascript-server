@@ -2,20 +2,15 @@ import UsersModel from './UserModel';
 import * as mongoose from 'mongoose';
 
 class userRepository {
-
   public static generateObjectId(){
     return mongoose.Types.ObjectId();
   }
 
-  public async signIn(query){
-    return await UsersModel.find(query, { password: 0});
+  public async count(query: any = {}){
+    return await UsersModel.countDocuments(query);
   }
 
-  public count(){
-    return UsersModel.countDocuments();
-  }
-
-  public createUser(data){                               //CREATE
+  public createUser(data: any){                         //CREATE
     const id = userRepository.generateObjectId();
     const model = new UsersModel({
       _id: id,
@@ -33,13 +28,19 @@ class userRepository {
     return UsersModel.findById(id);
   }
 
-  public updateUserById(id: any){             //UPDATE
+  public updateUserById(id: any){                       //UPDATE
     return UsersModel.findByIdAndUpdate();
   }
 
-  public deleteUserById(id: any){                    //DELETE
+  public deleteUserById(id: any){                       //DELETE
     return UsersModel.findByIdAndRemove(id);
   }
+
+  public async signIn(query: any){
+    const result = await UsersModel.find(query, { password: 0 });
+    return result;
+  }
+
 }
 
 export default new userRepository();

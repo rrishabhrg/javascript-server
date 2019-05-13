@@ -2,10 +2,10 @@ import { hasPermission } from '../routes/../../../extraTs/patterns/../utils/perm
 import { config } from '../routes/../../config';
 import * as jwt from 'jsonwebtoken';
 
-export const authMiddleWare = (moduleName, permissionType) => (req, res, next) => {
+export const authMiddleWare = (moduleName: any, permissionType: any) => (req, res, next) => {
   let token = req.header('Authorization');
   if(token){
-    jwt.verify(token, config.KEY, (err, req) => {    //KEY(qwertyuiopasdfghjklzxcvbnm123456)
+    jwt.verify(token, config.KEY, (err, req) => {
       if(err){
         return next({
           error: 'Forbidden',

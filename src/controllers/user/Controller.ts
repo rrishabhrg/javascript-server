@@ -1,15 +1,13 @@
 import UsersModel from '../../repositories/user/UserModel';
 import { Request, Response } from 'express';
-import UserModel from '../../repositories/user/UserModel';
-// import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
 import UserRepository from '../../repositories/user/UserRepository';
+import { config } from "../../config/configuration";
 
 class UserController {
-
   public post = (req: Request, res: Response) => {           //CREATE
     const { name, email, password, address } = req.body;
-    if(!(name && email && password && address)){
+    if(!(name && email && password && address)) {
       return res.status(400).send({
         message: 'This field can not be empty.'
       });
@@ -18,7 +16,7 @@ class UserController {
     res.send('New user created successfully.');
   }
 
-  public async get(req: Request, res: Response){              //READ
+  public async get(req: Request, res: Response) {             //READ
     const { id } = req.params;
     try {
       const user = await UserRepository.getUserById(id);
@@ -32,7 +30,7 @@ class UserController {
     }
   }
 
-  public put(req: Request, res: Response){              //UPDATE
+  public put(req: Request, res: Response) {             //UPDATE
     const { id } = req.params;
     UserRepository.updateUserById(id);
     if(!id) {
@@ -58,15 +56,17 @@ class UserController {
         return res.status(404).send({
           message: "User not found with this id " +id
         });
-      }else{
-      return res.status(500).send({
-        message: "Error occur while updating user with this id " +id
-      });}
+      }
+      else {
+        return res.status(500).send({
+          message: "Error occur while updating user with this id " +id
+        });
+      }
     })
     return('User details updated successfully.');
   }
 
-  public async delete(req: Request, res: Response){            //DELETE
+  public async delete(req: Request, res: Response) {            //DELETE
     const { id } = req.params;
     UserRepository;
     try {
@@ -88,20 +88,41 @@ class UserController {
     }
   }
 
-  public login = (req: Request, res: Response, next) => {
-    const { email } = req.body;
-    const found = UserRepository.signIn({email});
+  public login = async (req: Request, res: Response, next) => {
+    const { email, password } = req.body;
+    const found = await UserRepository.count({ email, password });
     if(!found) {
-      next({error:{
-        message: "uSER NOT FOUND"
+      next({error: {
+        message: "User Not Found."
       }})
     }
-
-    const token = jwt.sign({found}, 'secret', {
+    const data = await UserRepository.signIn({ email });
+    if(!found) {
+      next({error:{
+        message: "User Not Found."
+      }})
+    }
+    const token = await jwt.sign({data}, config.TOKEN_KEY, {
       expiresIn: '84600'
     });
-
     res.send(token);
+  }
+
+  public profile = async (req, res, next) => {
+    const token = req.header("Authorization");
+    if(!token) {
+      next({
+        error: 'Forbidden',
+        message: 'Token is empty',
+        status: 403
+      });
+    }
+    await jwt.verify(token, config.TOKEN_KEY, async (err)=> {
+      if(!err){
+        const decoded = await jwt.decode(token);
+        res.json(decoded);
+      }
+    })
   }
 }
 

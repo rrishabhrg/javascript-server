@@ -2,13 +2,13 @@ import * as express from 'express';
 import { notFoundRoute, errorHandler } from './libs';
 import { router } from './router';
 import Database from './libs/Database';
-import bodyParser from 'body-parser';
+// import bodyParser from 'body-parser';
+const bodyParser = require('body-parser');
 
 class Server {
   app = express();
   private port;
   private mongoUrl;
-  // private bodyParser = require('body-parser');
 
   constructor (config) {
     this.port = process.env.PORT;
