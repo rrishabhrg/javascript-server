@@ -1,17 +1,17 @@
-import { notFoundRoute, errorHandler } from './libs';
-import { IConfig } from './config'
 import * as express from 'express';
-import { traineeRouter } from './router';
-import bodyParser = require ('body-parser');
+import * as bodyParser from 'body-parser';
+import { notFoundRoute, errorHandler } from './libs';
+import { router } from './router';
+import Database from './libs/Database';
 
-class Server{
+class Server {
   app = express();
-  port: string;
-  bodyParser: any;
+  private port;
+  private mongoUrl;
 
-  constructor (private config: IConfig) {
+  constructor (config) {
     this.port = process.env.PORT;
-    this.app = express();
+    this.mongoUrl = process.env.MONGO_URL;
   }
 
   public bootstrap = (): Server => {
@@ -21,21 +21,23 @@ class Server{
   }
 
   public run: any = () => {
+    Database.open(this.mongoUrl);
     this.app.listen(this.port, () => {
       console.log(`This app is running on the port ${this.port}!`);
     });
   }
 
   public setupRoutes: any = () => {
-    this.app.use('/api', traineeRouter);
+
+    this.app.use('/api', router);   //Router
     this.app.use(notFoundRoute);
     this.app.use(errorHandler);
   }
 
   public initBodyParser = () => {
     this.app.use(bodyParser.json({ type: 'text/html' }));
-    this.app.use(bodyParser.urlencoded({ extended: false }))
-    }
+    this.app.use(bodyParser.urlencoded({ extended: false }));
+  }
 }
 
-export default Server;
+export default Server ;

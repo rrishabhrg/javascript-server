@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 
-let errorHandler: any = (err: any, req: Request, res: Response, next: NextFunction) => {
+export let errorHandler: any = (err: any, req: Request, res: Response, next: NextFunction) => {
   let errorObj =  {
     error: err.error ? err.error : 'Not Found',
     message: err.message ? err.message : 'Not Found Route',
@@ -10,4 +10,4 @@ let errorHandler: any = (err: any, req: Request, res: Response, next: NextFuncti
   res.status(errorObj.status).json(errorObj);
 };
 
-export { errorHandler };
+// export { errorHandler };
