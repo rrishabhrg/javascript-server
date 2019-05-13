@@ -1,8 +1,8 @@
 import * as express from 'express';
+import * as bodyParser from 'body-parser';
 import { notFoundRoute, errorHandler } from './libs';
 import { IConfig } from './config'
 import { traineeRouter } from './router';
-import * as bodyParser from 'body-parser';
 
 class Server{
   app = express();
