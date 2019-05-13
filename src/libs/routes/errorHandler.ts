@@ -9,3 +9,5 @@ export let errorHandler: any = (err: any, req: Request, res: Response, next: Nex
   }
   res.status(errorObj.status).json(errorObj);
 };
+
+// export { errorHandler };
