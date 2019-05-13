@@ -2,7 +2,6 @@ import * as express from 'express';
 import { notFoundRoute, errorHandler } from './libs';
 import { router } from './router';
 import Database from './libs/Database';
-// import bodyParser from 'body-parser';
 const bodyParser = require('body-parser');
 
 class Server {
