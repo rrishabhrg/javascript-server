@@ -1,5 +1,8 @@
 import UsersModel from './UserModel';
+import * as bcrypt from 'bcrypt';
 import { versionableRepository } from '../versionable/VersionableRepository';
+import { config } from '../../config';
+import { query } from 'express-validator/check';
 
 class userRepository extends versionableRepository {
 
@@ -11,35 +14,23 @@ class userRepository extends versionableRepository {
     return await UsersModel.countDocuments(query);
   }
 
-  // public static generateObjectId(){
-  //   return mongoose.Types.ObjectId();
-  // }
+  public async encryptPassword(value: String) {
+    return await bcrypt.hash(value, config.saltPass);
+  }
 
-  // public createUser(data: any){                         //CREATE
-  //   const id = userRepository.generateObjectId();
-  //   const model = new UsersModel({
-  //     _id: id,
-  //     ...data
-  //   });
-  //   model.save().then(data => {
-  //     return data;
-  //   })
-  //   .catch(error =>{
-  //     return error.message || "Some error occurred while creating the record."
-  //   });
-  // }
+  public async comparePassword(query: any = {}) {
+    const { email, password } = query;
+    const saveData = await this.findPassword({ email });
+    const found = await bcrypt.compare(password, saveData.password);
+    if(found) {
+      return found;
+    }
+    throw new Error();
+  }
 
-  // public getUserById(id: any){                          //READ
-  //   return UsersModel.findById(id);
-  // }
-
-  // public updateUserById(id: any){                       //UPDATE
-  //   return UsersModel.findByIdAndUpdate();
-  // }
-
-  // public deleteUserById(id: any){                       //DELETE
-  //   return UsersModel.findByIdAndRemove(id);
-  // }
+  public async findPassword(query: any = {}) {
+    return await UsersModel.findOne(query, { password: 1, _id: 0 });
+  }
 
   public async signIn(query: any){
     const result = await UsersModel.find(query, { password: 0 });
