@@ -1,13 +1,13 @@
-import * as mongoose from 'mongoose';
+import { VersionableSchema } from "../versionable/VersionableSchema";
 
-const Schema = mongoose.Schema;
-
-const userSchema = new Schema({
-  name: { type: String },
-  email: { type: String, unique: true, required: true },
-  password: { type: String },
-  address: { type: String },
-  createdAt: { type: Date, default: Date.now }
-});
-
-export default userSchema;
+export class UserSchema extends VersionableSchema {
+  constructor(options: any){
+    const userSchema = {
+      name: { type: String },
+      email: { type: String, unique: true, required: true },
+      password: { type: String },
+      address: { type: String }
+    }
+    super(userSchema, options);
+  }
+}

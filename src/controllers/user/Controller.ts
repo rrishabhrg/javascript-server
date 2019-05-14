@@ -5,6 +5,7 @@ import UserRepository from '../../repositories/user/UserRepository';
 import { config } from "../../config/configuration";
 
 class UserController {
+
   public post = (req: Request, res: Response) => {           //CREATE
     const { name, email, password, address } = req.body;
     if(!(name && email && password && address)) {
