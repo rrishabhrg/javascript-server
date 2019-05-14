@@ -1,4 +1,4 @@
-import { hasPermission } from '../routes/../../../extraTs/patterns/../utils/permissions/permissions';
+import { hasPermission } from '../../../extraTs/utils/';
 import { config } from '../routes/../../config';
 import * as jwt from 'jsonwebtoken';
 
