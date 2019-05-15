@@ -1,4 +1,7 @@
 export interface IConfig {
-  PORT: string,
-  NODE_ENV: string
+  PORT,
+  NODE_ENV,
+  MONGO_URL,
+  TOKEN_KEY,
+  SALT_PASSWORD
 }

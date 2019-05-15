@@ -12,7 +12,7 @@ let permission: object = {
 
 let hasPermission: IhasPermission;
 hasPermission = function (moduleName: string, role: string, permissionType: string) {
-  return(permission[moduleName]['all'].indexOf(role)!==-1 || permission[moduleName][permissionType].indexOf(role)!==-1);
+  return permission[moduleName]['all'].indexOf(role)!==-1 || permission[moduleName][permissionType].indexOf(role)!==-1;
 }
 
 export { hasPermission };
