@@ -1,6 +1,7 @@
 import * as mongoose from "mongoose";
 
 export class VersionableSchema extends mongoose.Schema {
+
   constructor(basicSchema, Options: any) {
     const versionSchema = {
       ...basicSchema,
@@ -9,4 +10,5 @@ export class VersionableSchema extends mongoose.Schema {
     };
     super(versionSchema, Options);
   }
+
 }

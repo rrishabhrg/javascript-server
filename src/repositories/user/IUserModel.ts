@@ -6,5 +6,6 @@ export interface IUserModel extends IVersionableModel {
   name: String,
   email: String,
   password: String,
-  address: String
+  address: String,
+  role: String
 }

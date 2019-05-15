@@ -1,15 +1,15 @@
-import { hasPermission } from '../routes/../../../extraTs/patterns/../utils/permissions/permissions';
+import { hasPermission } from '../../../extraTs/utils';
 import { config } from '../routes/../../config';
 import * as jwt from 'jsonwebtoken';
 
 export const authMiddleWare = (moduleName: any, permissionType: any) => (req, res, next) => {
   let token = req.header('Authorization');
   if(token){
-    jwt.verify(token, config.KEY, (err, req) => {
+    jwt.verify(token, config.TOKEN_KEY, (err) => {
       if(err){
-        return next({
+        next({
           error: 'Forbidden',
-          message: 'Token is not verified.',
+          message: 'Token Is Not Verified.',
           status: 403
         })
       }
@@ -18,6 +18,10 @@ export const authMiddleWare = (moduleName: any, permissionType: any) => (req, re
           res.send('Authorized Access.');
         }
         else{
+          console.log(moduleName);
+          console.log(req.role);
+          console.log(permissionType);
+          // console.log(hasPermission(moduleName, req.role, permissionType));
           return next({
             error: 'Forbidden',
             message: 'Unauthorized Access.',

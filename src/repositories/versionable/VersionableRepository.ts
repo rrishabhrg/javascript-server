@@ -14,15 +14,9 @@ export class versionableRepository {
 
   public createUser(data: any){                                              //CREATE
     const id = versionableRepository.generateObjectId();
-    const model = new UsersModel({
+    const model = UsersModel.create({
       _id: id,
       ...data
-    });
-    model.save().then(data => {
-      return data;
-    })
-    .catch(error =>{
-      return error.message || "Some error occurred while creating the record."
     });
   }
 
@@ -30,11 +24,11 @@ export class versionableRepository {
     return UsersModel.findById(id);
   }
 
-  public updateUserById(id: any){                                            //UPDATE
+  public updateUserById(id: any) {                                            //UPDATE
     return UsersModel.findByIdAndUpdate();
   }
 
-  public deleteUserById(id: any){                                            //DELETE
+  public deleteUserById(id: any) {                                            //DELETE
     return UsersModel.findByIdAndRemove(id);
   }
 

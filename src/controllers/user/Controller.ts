@@ -90,40 +90,54 @@ class UserController {
   }
 
   public login = async (req: Request, res: Response, next) => {
+    try {
     const { email, password } = req.body;
-    const found = await UserRepository.count({ email, password });
-    if(!found) {
-      next({error: {
-        message: "User Not Found."
-      }})
+    const found = await UserRepository.count({ email });
+    if(found) {
+      const compare = await UserRepository.comparePassword({ email, password });
+      if (compare) {
+        const data = await UserRepository.find({ email });
+        const token = await jwt.sign({ data }, config.TOKEN_KEY, {
+          expiresIn: 900
+        });
+        res.send(token);
+      } else {
+        res.send("NOT FOUND");
+      }
+    } else {
+      res.send("NOT FOUND");
     }
-    const data = await UserRepository.signIn({ email });
-    if(!found) {
-      next({error:{
-        message: "User Not Found."
-      }})
-    }
-    const token = await jwt.sign({data}, config.TOKEN_KEY, {
-      expiresIn: '84600'
-    });
-    res.send(token);
+  } catch (error) {
+    throw new Error();
+  }
   }
 
   public profile = async (req, res, next) => {
-    const token = req.header("Authorization");
-    if(!token) {
-      next({
-        error: 'Forbidden',
-        message: 'Token is empty',
-        status: 403
-      });
-    }
-    await jwt.verify(token, config.TOKEN_KEY, async (err)=> {
-      if(!err){
-        const decoded = await jwt.decode(token);
-        res.json(decoded);
+    try {
+      const token = req.header("Authorization");
+      if(!token) {
+        next({error : {
+          error: 'Forbidden',
+          message: 'Token is empty',
+          status: 403
+        }});
       }
-    })
+
+      await jwt.verify(token, config.TOKEN_KEY, async (err)=> {
+        if(!err){
+          const decoded = await jwt.decode(token);
+          res.json(decoded);
+        } else {
+          next({error : {
+            error: 'Forbidden',
+            message: 'Token is invalid',
+            status: 403
+          }});
+        }
+      })
+    } catch (error) {
+      throw new Error();
+    };
   }
 }
 

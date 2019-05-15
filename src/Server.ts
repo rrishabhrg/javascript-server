@@ -9,7 +9,7 @@ class Server {
   private port;
   private mongoUrl;
 
-  constructor (config) {
+  constructor (config: any) {
     this.port = process.env.PORT;
     this.mongoUrl = process.env.MONGO_URL;
   }

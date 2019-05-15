@@ -1,5 +1,5 @@
 import { default as Server } from './Server';
 import { config } from './config';
 
-const server = new Server(config);
-server.bootstrap().run();
+const serve = new Server(config);
+serve.bootstrap().run();
