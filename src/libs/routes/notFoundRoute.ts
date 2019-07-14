@@ -1,4 +1,4 @@
-export default function notFoundRoute( req, res, next) {
+  export default function notFoundRoute( req, res, next) {
   return next({
     error: 'Forbidden',
     message: 'Requested Page Forbidden.',
